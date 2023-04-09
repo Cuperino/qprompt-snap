@@ -50,10 +50,10 @@ parts:
     stage-packages:
     - libqt5svg5
     - libqt5x11extras5
-    - libkf5coreaddons
-    - libkf5i18n
-    - libkf5crash
-    - kirigami2
+    - libkf5coreaddons5
+    - libkf5i18n5
+    - libkf5crash5
+    - libkf5kirigami2-5
     - qml-module-qt-labs-platform
     - qml-module-qtqml
     - qml-module-qtqml-models2
