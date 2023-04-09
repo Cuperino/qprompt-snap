@@ -63,13 +63,8 @@ parts:
     - qml-module-qtquick-dialogs
     - qml-module-qtquick-shapes
     - qml-module-org-kde-kirigami2
-    - libkf5i18n5
-    - libkf5coreaddons5
-    - libkf5crash5
-    prime:
-    - "$exclusion"
 
-qhotkey:
+  qhotkey:
     plugin: cmake
     source: https://github.com/Skycoder42/QHotkey.git
     source-type: git
