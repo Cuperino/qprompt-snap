@@ -62,7 +62,7 @@ parts:
     # - libqt5virtualkeyboard5
     - libkf5coreaddons-dev
     - libkf5i18n-dev
-    - libkf5iconthemes5-dev
+    - libkf5iconthemes-dev
     - libkf5crash-dev
     - kirigami2-dev
     - libgl-dev
