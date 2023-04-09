@@ -1,5 +1,5 @@
 name: qprompt
-base: core20
+base: core22
 version: '1.1.6'
 summary: Personal teleprompter software # 79 char long summary
 description: |
@@ -37,7 +37,7 @@ parts:
     - "-DENABLE_TESTING=OFF"
     - "-DBUILD_TESTING=OFF"
     - "-DKDE_SKIP_TEST_SETTINGS=ON"
-    - "-DCMAKE_FIND_ROOT_PATH=/usr\\;/root/stage\\;/snap/kde-frameworks-5-99-qt-5-15-7-core20-sdk/current"
+    - "-DCMAKE_FIND_ROOT_PATH=/usr\\;/root/stage\\;/snap/kde-frameworks-5-102-qt-5-15-7-core22-sd/current"
     filesets:
       exclusion:
       - "-usr/lib/*/cmake/*"
@@ -49,8 +49,8 @@ parts:
       - "-usr/bin/X11"
       - "-usr/lib/gcc/x86_64-linux-gnu/6.0.0"
     build-snaps:
-    - kde-frameworks-5-99-qt-5-15-7-core20-sdk
-    - kde-frameworks-5-99-qt-5-15-7-core20
+    - kde-frameworks-5-102-qt-5-15-7-core22-sd
+    - kde-frameworks-5-102-qt-5-15-7-core22
     build-packages:
     - kirigami2-dev
     - libgl-dev
