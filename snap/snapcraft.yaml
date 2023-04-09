@@ -41,16 +41,36 @@ parts:
     - "-DKDE_SKIP_TEST_SETTINGS=ON"
     build-packages:
     - extra-cmake-modules
+    - libqt5core5a
+    - libqt5quick5
     - libqt5svg5-dev
+    - libqt5gui5
+    - libqt5qml5
+    - libqt5qmlmodels5
+    - libqt5quickcontrols2-5
+    - libqt5network5
+    - libqt5widgets5
     - libqt5x11extras5-dev
+    # - libqt5gamepad5-dev
+    # - libqt5multimedia5
     - libkf5coreaddons-dev
     - libkf5i18n-dev
     - libkf5crash-dev
     - kirigami2-dev
     - libgl-dev
     stage-packages:
+    - libqt5core5a
+    - libqt5quick5
     - libqt5svg5
+    - libqt5gui5
+    - libqt5qml5
+    - libqt5qmlmodels5
+    - libqt5quickcontrols2-5
+    - libqt5network5
+    - libqt5widgets5
     - libqt5x11extras5
+    # - libqt5gamepad5
+    # - libqt5multimedia5
     - libkf5coreaddons5
     - libkf5i18n5
     - libkf5crash5
@@ -63,6 +83,7 @@ parts:
     - qml-module-qtquick-controls2
     - qml-module-qtquick-dialogs
     - qml-module-qtquick-shapes
+    - qml-module-org-kde-kcoreaddons
     - qml-module-org-kde-kirigami2
 
   qhotkey:
