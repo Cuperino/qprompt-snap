@@ -19,7 +19,9 @@ icon: snap/gui/icon.png
 
 architectures:
 - build-on: amd64
+  build-for: amd64
 - build-on: arm64
+  build-for: arm64
 
 parts:
   qprompt:
@@ -39,16 +41,6 @@ parts:
     - "-DBUILD_TESTING=OFF"
     - "-DKDE_SKIP_TEST_SETTINGS=ON"
     - "-DCMAKE_FIND_ROOT_PATH=/usr\\;/root/stage\\;/snap/kde-frameworks-5-102-qt-5-15-7-core22-sd/current"
-    filesets:
-      exclusion:
-      - "-usr/lib/*/cmake/*"
-      - "-usr/include/*"
-      - "-usr/share/ECM/*"
-      - "-usr/share/doc/*"
-      - "-usr/share/man/*"
-      - "-usr/share/icons/breeze-dark*"
-      - "-usr/bin/X11"
-      - "-usr/lib/gcc/x86_64-linux-gnu/6.0.0"
     build-snaps:
     - kde-frameworks-5-102-qt-5-15-7-core22-sd
     - kde-frameworks-5-102-qt-5-15-7-core22
