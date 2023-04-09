@@ -48,7 +48,7 @@ parts:
     - libqt5qml5
     - libqt5qmlmodels5
     - libqt5quickcontrols2-5
-    - libqt5quickshapes2-5
+    - libqt5quickshapes5
     - libqt5network5
     - libqt5widgets5
     - libqt5x11extras5-dev
