@@ -40,6 +40,7 @@ parts:
     - "-DBUILD_TESTING=OFF"
     - "-DKDE_SKIP_TEST_SETTINGS=ON"
     build-packages:
+    - extra-cmake-modules
     - libqt5svg5-dev
     - libqt5x11extras5-dev
     - libkf5coreaddons-dev
