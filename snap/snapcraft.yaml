@@ -53,6 +53,10 @@ parts:
     - libqt5widgets5
     - libqt5x11extras5-dev
     - libqt5xml5
+    - qtbase-5-dev
+    - qtquickcontrols2-5-dev
+    - qtdeclarative-5-dev
+    # - qtmultimedia-5-dev
     # - libqt5gamepad5-dev
     # - libqt5multimedia5
     # - libqt5virtualkeyboard5
