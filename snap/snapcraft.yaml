@@ -19,9 +19,9 @@ icon: snap/gui/icon.png
 
 architectures:
 - build-on: amd64
-run-on: amd64
+  run-on: amd64
 - build-on: arm64
-run-on: arm64
+  run-on: arm64
 
 parts:
   qprompt:
