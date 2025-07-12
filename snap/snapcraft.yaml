@@ -90,4 +90,6 @@ apps:
       - opengl
       - wayland
       - x11
+      - home
+      - removable-media
       - network
