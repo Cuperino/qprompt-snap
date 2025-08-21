@@ -31,7 +31,7 @@ parts:
     plugin: cmake
     source: https://github.com/Cuperino/QPrompt.git
     source-type: git
-    source-tag: 2.0.0-snap
+    source-tag: v2.0.0-snap
     cmake-parameters:
     - -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
     - -DCMAKE_INSTALL_PREFIX=/usr
@@ -78,6 +78,12 @@ parts:
     - -usr/lib/aspell/*
     - -usr/share/lintian
 
+plugs:
+  dot-config-cuperino-qprompt:
+    interface: personal-files
+    read:
+    - $HOME/.config/Cuperino/qprompt.conf
+
 apps:
   qprompt:
     extensions:
@@ -93,3 +99,4 @@ apps:
       - home
       - removable-media
       - network
+      - dot-config-cuperino-qprompt
