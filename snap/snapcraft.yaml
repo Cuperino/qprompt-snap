@@ -45,6 +45,7 @@ parts:
     build-packages:
     - kirigami2-dev
     - libgl-dev
+    - libduktape207
     prime:
     - -usr/lib/*/cmake/*
     - -usr/include/*
