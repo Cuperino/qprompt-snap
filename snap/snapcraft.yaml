@@ -1,6 +1,7 @@
 name: qprompt
-base: core24
-version: '2.0.0'
+title: QPrompt Teleprompter
+base: core26
+version: '2.0.2'
 summary: Personal teleprompter software # 79 char long summary
 description: |
   Personal teleprompter software for all video creators.
@@ -8,6 +9,10 @@ description: |
   smooth performance in mind. QPrompt works with tablet teleprompters,
   studio teleprompters, webcams and cellphones.
 license: GPL-3.0
+contact: https://forum.qprompt.app/
+issues: https://feedback.qprompt.app/
+source-code: https://github.com/Cuperino/QPrompt-Teleprompter/
+website: https://qprompt.app/
 
 type: app
 grade: stable # must be 'stable' to release into candidate/stable channels
@@ -18,9 +23,12 @@ compression: lzo
 icon: snap/gui/icon.png
 
 platforms:
-    amd64:
-        build-on: [amd64]
-        build-for: [amd64]
+  amd64:
+    build-on: [amd64]
+    build-for: [amd64]
+  arm64:
+    build-on: [arm64]
+    build-for: [arm64]
 
 parts:
   qprompt:
@@ -29,9 +37,9 @@ parts:
     parse-info:
     - usr/share/metainfo/com.cuperino.qprompt.appdata.xml
     plugin: cmake
-    source: https://github.com/Cuperino/QPrompt.git
+    source: https://github.com/Cuperino/QPrompt-Teleprompter.git
     source-type: git
-    source-tag: v2.0.0-snap
+    source-tag: v2.0.2-no-screens
     cmake-parameters:
     - -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
     - -DCMAKE_INSTALL_PREFIX=/usr
@@ -40,12 +48,23 @@ parts:
     - -DBUILD_TESTING=OFF
     - -DSOURCE_DEPENDENCIES_EXCLUSIVELY_FROM_SYSTEM=ON
     build-snaps:
-    - core24
-    - kf6-core24
+    - core26
     build-packages:
+    - extra-cmake-modules
     - kirigami2-dev
-    - libgl-dev
     - libduktape207
+    - libgl-dev
+    # - libhunspell-dev
+    - libkf6breezeicons-dev
+    - libkf6coreaddons-dev
+    - libkirigami-dev
+    - libkf6crash-dev
+    - libkf6iconthemes-dev
+    - qt6-tools-dev
+    - qt6-shadertools-dev
+    - qt6-svg-dev
+    - qt6-l10n-tools
+    # - libvulkan-dev
     prime:
     - -usr/lib/*/cmake/*
     - -usr/include/*
@@ -55,6 +74,34 @@ parts:
     - -usr/lib/gcc/$CRAFT_ARCH_TRIPLET_BUILD_FOR/6.0.0
     - -usr/lib/aspell/*
     - -usr/share/lintian
+    stage-packages:
+    # - hunspell
+    - hicolor-icon-theme
+    - kf6-breeze-icon-theme
+    - libkf6coreaddons6
+    - libkf6crash6
+    - libkf6iconthemes6
+    - libkirigami6
+    - libqt6svg6
+    - libqt6qmlworkerscript6
+    - libqt6shadertools6
+    - qml6-module-org-kde-kirigami
+    - qml6-module-qt-labs-platform
+    - qml6-module-qtqml
+    - qml6-module-qtqml-models
+    - qml6-module-qtqml-statemachine
+    - qml6-module-qtquick-controls
+    - qml6-module-qtcore
+    - qml6-module-qt-labs-settings
+    - qml6-module-qtquick-dialogs
+    - qml6-module-qtquick-shapes
+    - qt6-svg-plugins
+    - qt6-translations-l10n
+    # - libvulkan1
+    # Dependencies provided by KDE neon SDK
+    - libproxy1v5
+    - libqt6gui6
+    - qt6-wayland
 
   qhotkey:
     plugin: cmake
@@ -67,8 +114,7 @@ parts:
     - -DBUILD_SHARED_LIBS=ON
     - -DQT_DEFAULT_MAJOR_VERSION=6
     build-snaps:
-    - core24
-    - kf6-core24
+    - core26
     prime:
     - -usr/lib/*/cmake/*
     - -usr/include/*
@@ -79,25 +125,47 @@ parts:
     - -usr/lib/aspell/*
     - -usr/share/lintian
 
+  gpu-2604:
+    after:
+    - qprompt
+    source: https://github.com/canonical/gpu-snap.git
+    plugin: dump
+    override-prime: |
+      craftctl default
+      ${CRAFT_PART_SRC}/bin/gpu-2604-cleanup mesa-2604
+    prime:
+    - bin/gpu-2604-wrapper
+
 plugs:
   dot-config-cuperino-qprompt:
     interface: personal-files
     read:
     - $HOME/.config/Cuperino/qprompt.conf
+  gpu-2604:
+    interface: content
+    target: $SNAP/gpu-2604
+    default-provider: mesa-2604
 
 apps:
   qprompt:
-    extensions:
-      - kde-neon-6
     common-id: com.cuperino.qprompt.desktop
+    command-chain:
+    - bin/gpu-2604-wrapper
     command: usr/bin/qprompt
+    environment:
+      # Path needed for libproxy to be found
+      LD_LIBRARY_PATH: $LD_LIBRARY_PATH:$SNAP/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libproxy
+      QT_PLUGIN_PATH: $SNAP/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/qt6/plugins
+      QML_IMPORT_PATH: $SNAP/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/qt6/qml
+      QML2_IMPORT_PATH: $SNAP/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/qt6/qml
+      XDG_DATA_DIRS: $SNAP/usr/share:$XDG_DATA_DIRS
     plugs:
-      - desktop
-      - desktop-legacy
-      - opengl
-      - wayland
-      - x11
-      - home
-      - removable-media
-      - network
-      - dot-config-cuperino-qprompt
+    - desktop
+    - desktop-legacy
+    - opengl
+    - wayland
+    - x11
+    - home
+    - removable-media
+    - network
+    - dot-config-cuperino-qprompt
