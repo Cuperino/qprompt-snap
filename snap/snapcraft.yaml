@@ -54,7 +54,6 @@ parts:
     - kirigami2-dev
     - libduktape207
     - libgl-dev
-    # - libhunspell-dev
     - libkf6breezeicons-dev
     - libkf6coreaddons-dev
     - libkirigami-dev
@@ -64,7 +63,6 @@ parts:
     - qt6-shadertools-dev
     - qt6-svg-dev
     - qt6-l10n-tools
-    # - libvulkan-dev
     prime:
     - -usr/lib/*/cmake/*
     - -usr/include/*
@@ -75,7 +73,6 @@ parts:
     - -usr/lib/aspell/*
     - -usr/share/lintian
     stage-packages:
-    # - hunspell
     - hicolor-icon-theme
     - kf6-breeze-icon-theme
     - libkf6coreaddons6
@@ -97,7 +94,6 @@ parts:
     - qml6-module-qtquick-shapes
     - qt6-svg-plugins
     - qt6-translations-l10n
-    # - libvulkan1
     # Dependencies provided by KDE neon SDK
     - libproxy1v5
     - libqt6gui6
