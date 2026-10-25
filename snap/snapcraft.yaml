@@ -100,6 +100,7 @@ parts:
     - qml6-module-qtquick-shapes
     - qt6-svg-plugins
     - qt6-translations-l10n
+    - qt6-xdgdesktopportal-platformtheme
     # Dependencies provided by KDE neon SDK
     - libproxy1v5
     - libqt6gui6
